@@ -50,3 +50,22 @@ When pressing **Start**, there are two different options:
    - Insert user data from settings into all profiles  
    - If multiple profiles exist, open the selection window and start EuroScope with the chosen profile  
    - Launch the audio tool for VATSIM  
+
+**Possible online Files**
+- settings.csv (required)
+  - FIR
+  - minLat
+  - maxLat
+  - minLon
+  - maxLon
+  - ownNavdata
+    if user need own Navdata True/False
+  - SidStarAirports
+    For which Airport SIDSTAR should be created. example: LO create SIDSTARS for all Airports starting with LO
+  - AirportRWY
+    Which Airport should have runways in the runway selection dialog, same logic as SidStarsAirports
+- EuroScope.tff (required)
+- ProceduresCombiner.csv (required if OwnNavdata=True)
+- Procedures.csv (optional)
+- runways.csv (optional)
+- waypoints.csv (optional)
