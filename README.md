@@ -51,6 +51,13 @@ When pressing **Start**, there are two different options:
    - If multiple profiles exist, open the selection window and start EuroScope with the chosen profile  
    - Launch the audio tool for VATSIM  
 
+
+**DEVELOPER**
+all you must set is 
+URL = "HTPP link where all your onlinefiles are stored"
+FIR = "4-Letter Code of your FIR"
+Testing = True or False, depenting if you are using this file as py or convert it into a exe file via auto-py-to-exe
+
 **Possible online Files**
 - settings.csv (required)
   - FIR
