@@ -1,7 +1,3 @@
-Here is your text translated into English while keeping the formatting intact:  
-
----
-
 This installer checks whether newer files are available on a server compared to the local ones.  
 When the program starts, it first verifies if a newer version of the installer is available online.  
 
