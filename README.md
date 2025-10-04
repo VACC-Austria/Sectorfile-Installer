@@ -9,43 +9,23 @@ The main screen contains three control elements:
   - VATSIM Password  
   - VATSIM Rating  
   - Hoppie Code  
-  - Audio Tool for VATSIM  
+  - Audio Tool for VATSIM
+- **Custom Files**  
 - **Fresh Install**  
 - **Start**  
 
-When pressing **Fresh Install**, there are two different options:  
-
-1. **Start Without User AIRAC Data**  
+When pressing **Fresh Install**:  
    - Download and install EuroScope  
-   - Download and install the sector file  
-   - Transfer custom files into the installed sector file  
+   - Open GNG Webpage and open Sectorfile folder for extracting the GNG file 
 
-2. **Start With User AIRAC Data**  
-   - Check if the local "FS-Navigator 4.x" and "Global Air Traffic Control" AIRAC are installed  
-   - Verify if the AIRAC matches the online version  
-   - Download and install EuroScope  
-   - Download and install the sector file  
-   - Remove and replace VOR, NDB, FIX, Airport, Runway, SID, and STAR in the `.sct` section with "Global Air Traffic Control" AIRAC data (limited by `Setting.csv`)  
-   - Remove and replace SID/STAR in the `.ese` section with "Global Air Traffic Control" AIRAC data (limited by `Setting.csv`)  
-   - Transfer custom files into the installed sector file  
-
-When pressing **Start**, there are two different options:  
-
-1. **Start Without User AIRAC Data**  
+When pressing **Start**, 2 different scenarios:
+1.When Airac isn't Up to Date:
    - Check if the local EuroScope version matches the online version. If not, download and install EuroScope  
-   - Check if the local sector file version matches the online version. If not, download and install the sector file  
-   - Transfer custom files into the installed sector file  
-   - Insert user data from settings into all profiles  
-   - If multiple profiles exist, open the selection window and start EuroScope with the chosen profile  
-   - Launch the audio tool for VATSIM  
+   - Check if the local sector file version matches the online version. If not, Open GNG Webpage and open Sectorfile folder for extracting the GNG file.  
 
-2. **Start With User AIRAC Data**  
-   - Check if the local "FS-Navigator 4.x" and "Global Air Traffic Control" AIRAC are installed  
-   - Verify if the AIRAC matches the online version  
+2.When Airac is Up to Date:
    - Check if the local EuroScope version matches the online version. If not, download and install EuroScope  
-   - Check if the local sector file version matches the online version. If not, download and install the sector file  
-   - Remove and replace VOR, NDB, FIX, Airport, Runway, SID, and STAR in the `.sct` section with "Global Air Traffic Control" AIRAC data (limited by `Setting.csv`)  
-   - Remove and replace SID/STAR in the `.ese` section with "Global Air Traffic Control" AIRAC data (limited by `Setting.csv`)  
+   - Check if the local sector file version matches the online version.
    - Transfer custom files into the installed sector file  
    - Insert user data from settings into all profiles  
    - If multiple profiles exist, open the selection window and start EuroScope with the chosen profile  
@@ -56,23 +36,10 @@ When pressing **Start**, there are two different options:
 all you must set is 
 URL = "HTPP link where all your onlinefiles are stored"
 FIR = "4-Letter Code of your FIR"
+Packagename = "How the Correct Packagename is called at https://files.aero-nav.com/"
 Testing = True or False, depenting if you are using this file as py or convert it into a exe file via auto-py-to-exe
 
-**Possible online Files**
-- settings.csv (required)
-  - FIR
-  - minLat
-  - maxLat
-  - minLon
-  - maxLon
-  - ownNavdata
-    if user need own Navdata True/False
-  - SidStarAirports
-    For which Airport SIDSTAR should be created. example: LO create SIDSTARS for all Airports starting with LO
-  - AirportRWY
-    Which Airport should have runways in the runway selection dialog, same logic as SidStarsAirports
-- EuroScope.tff (required)
-- ProceduresCombiner.csv (required if OwnNavdata=True)
-- Procedures.csv (optional)
-- runways.csv (optional)
-- waypoints.csv (optional)
+**Required online Files**
+- EuroScope.tff
+- EuroScope.zip
+- installerversion.txt
