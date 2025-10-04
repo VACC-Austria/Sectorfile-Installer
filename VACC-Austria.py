@@ -17,8 +17,8 @@ import pandas as pd
 import psutil
 from bs4 import BeautifulSoup
 
-URL = "https://vacc-lithuania.lima-city.at/Installer/"
-FIR = "EYVL"
+URL = "https://downloads.vacc-austria.org/Sectorfiles/ATC_Installer/"
+FIR = "LOVV"
 Packagename = "Installer"
 Testing = False  # Change the base path to Meipass for exe file
 
