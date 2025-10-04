@@ -19,6 +19,7 @@ When pressing **Fresh Install**:
    - Open GNG Webpage and open Sectorfile folder for extracting the GNG file 
 
 When pressing **Start**, 2 different scenarios:
+
 1.When Airac isn't Up to Date:
    - Check if the local EuroScope version matches the online version. If not, download and install EuroScope  
    - Check if the local sector file version matches the online version. If not, Open GNG Webpage and open Sectorfile folder for extracting the GNG file.  
