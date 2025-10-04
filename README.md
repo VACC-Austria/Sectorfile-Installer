@@ -34,11 +34,17 @@ When pressing **Start**, 2 different scenarios:
 
 
 **DEVELOPER**
+
 all you must set is 
+
 URL = "HTPP link where all your onlinefiles are stored"
+
 FIR = "4-Letter Code of your FIR"
+
 Packagename = "How the Correct Packagename is called at https://files.aero-nav.com/"
+
 Testing = True or False, depenting if you are using this file as py or convert it into a exe file via auto-py-to-exe
+
 
 **Required online Files**
 - EuroScope.tff
