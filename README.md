@@ -37,7 +37,7 @@ When pressing **Start**, 2 different scenarios:
 
 all you must set is 
 
-URL = "HTPP link where all your onlinefiles are stored"
+URL = "HTTP link where all your onlinefiles are stored"
 
 FIR = "4-Letter Code of your FIR"
 
