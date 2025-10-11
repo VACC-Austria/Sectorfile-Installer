@@ -8,7 +8,11 @@ Download and install EuroScope Open GNG Webpage and open Sectorfile folder for e
 
 1.When Airac isn't Up to Date:
 
-Check if the local EuroScope version matches the online version. If not, download and install EuroScope Check if the local sector file version matches the online version. If not, Open GNG Webpage and open Sectorfile folder for extracting the GNG file. 2.When Airac is Up to Date:
+Check if the local EuroScope version matches the online version. If not, download and install EuroScope Check if the local sector file version matches the online version. If not, Open GNG Webpage and open Sectorfile folder for extracting the GNG file. 
+
+
+
+2.When Airac is Up to Date:
 
 Check if the local EuroScope version matches the online version. If not, download and install EuroScope Check if the local sector file version matches the online version. Transfer custom files into the installed sector file Insert user data from settings into all profiles If multiple profiles exist, open the selection window and start EuroScope with the chosen profile Launch the audio tool for VATSIM DEVELOPER
 
