@@ -1,0 +1,15 @@
+{
+    "URL": "https://downloads.vacc-austria.org/Sectorfiles/ATC_Installer/",
+    "FIR": "LOVV",
+    "Packagename": "Installer",
+    "FIR_fullname": "VACC-Austria",
+    "logo_path": "vacc\\logo.png",
+    "icon_path": "vacc\\icon.ico",
+    "installer_update_URL": "https://www.vacc-austria.org/?page=content/static&id=SOFTWARE_ATC",
+    "euroscope_URL": "https://www.euroscope.hu/wp/category/public-release/",
+    "euroscope_version_URL": "https://euroscope.hu/install/version.txt",
+    "special_files": [
+        "LOVV\\Plugins\\Groundradar\\GRpluginSettingsLocal.txt",
+        "LOVV\\Plugins\\Topsky\\TopSkySettingsLocal.txt"
+    ]
+}
