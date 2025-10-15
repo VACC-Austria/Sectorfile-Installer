@@ -8,6 +8,8 @@ on:
 jobs:  
   pyinstaller-build-vacc-austria:
     runs-on: windows-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
