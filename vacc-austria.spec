@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='Session-Launcher',
+    name='VACC-Austria-Launcher',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
