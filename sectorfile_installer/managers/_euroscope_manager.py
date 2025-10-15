@@ -11,7 +11,7 @@ logger = get_logger(__file__)
 class EuroscopeManager:
     def check_euroscope_location(self, location: str | None = None) -> bool:
         if location is None:
-            location = self._get_es_path()
+            location = self.es_path
         logger.info("checking for euroscope at %s", str(location))
         if get_fileinfo(location, "ProductName") == "EuroScope Application":
             return True
@@ -74,7 +74,7 @@ class EuroscopeManager:
         return version_tuple(version), upgrade_url
 
     def get_installed_version(self) -> tuple[int]:
-        version = get_fileinfo(self._get_es_path(), "ProductVersion") 
+        version = get_fileinfo(self.es_path, "ProductVersion") 
         if version is None:
             raise RuntimeError("could not fetch Euroscope version")
         logger.info("found euroscope version %s", version)
@@ -84,7 +84,7 @@ class EuroscopeManager:
         if not self.check_euroscope_location():
             return False, "euroscope_not_found"
 
-        command = [str(self._get_es_path())]
+        command = [str(self.es_path)]
 
         if profile is not None:
             command.append(str(profile))
@@ -92,13 +92,14 @@ class EuroscopeManager:
         logger.info("starting Euroscope: '%s'", " ".join(command))
         subprocess.Popen(
             command, 
-            cwd=str(self._get_es_path().parent),
+            cwd=str(self.es_path.parent),
             start_new_session=True,
         )
 
         return True, "ok"
 
-    def _get_es_path(self) -> Path | None:
+    @property
+    def es_path(self) -> Path | None:
         es_path = Settings.get("euroscope_path")
         if not es_path:
             return None
