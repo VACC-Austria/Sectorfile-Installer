@@ -9,13 +9,12 @@ jobs:
   pyinstaller-build-vacc-austria:
     runs-on: windows-latest
     steps:
-      - name: Create Executable
-        uses: sayyid5416/pyinstaller@dcfd75f8789130c10c0a34c3dee563e3f6906ea4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
-          python_ver: '3.14'
-          spec: 'vacc-austria.spec'
-          requirements: 'requirements.txt'
-          options: --onefile, --name "VACC-Austria Session-Launcher", --windowed
+          python-version: 3.14
+      - run: pip install -r requirements.txt pyinstaller
+      - run: pyinstaller --noconfirm vacc-austria.spec
       - name: Create Release
         uses: softprops/action-gh-release@6da8fa9354ddfdc4aeace5fc48d7f679b5214090
         with:
