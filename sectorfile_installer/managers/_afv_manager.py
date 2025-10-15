@@ -1,6 +1,6 @@
 import ctypes
 from pathlib import Path
-import subprocess
+from contextlib import chdir
 
 from sectorfile_installer.util import Settings, get_fileinfo, get_logger
 
@@ -34,15 +34,31 @@ class AfvManager:
         
         return False, "error"
 
-    def start(self):
+    def start(self, workdir: str | Path | None = None):
+        if workdir is None:
+            workdir = Path.cwd()
+        elif isinstance(workdir, str):
+            workdir = Path(workdir)
+        elif isinstance(workdir, Path):
+            pass
+        else:
+            raise ValueError("expected workdir to be a string or a Path")
+        
         is_ok, msg = self.check_afv()
 
         if not is_ok:
             return is_ok, msg
 
         logger.info("starting afv application (as admin): %s", self._get_afv_path())
-
-        ctypes.windll.shell32.ShellExecuteW(None, "runas", str(self._get_afv_path()), None, None, 3)
+        with chdir(workdir):
+            ctypes.windll.shell32.ShellExecuteW(
+                None, 
+                "runas", 
+                str(self._get_afv_path()), 
+                None, 
+                None, 
+                3
+            )
 
         return True, "ok"
 
