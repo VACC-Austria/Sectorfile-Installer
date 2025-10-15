@@ -10,7 +10,7 @@ from ._translate import translate
 logger = get_logger(__file__)
 
 def install_sectorfile_action():
-        messagebox.showinfo("Hinweis", translate("sectorfile_version"))
+        messagebox.showinfo(translate("hint"), translate("sectorfile_version"))
         sct_mgr = SectorfileManager()
         webbrowser.open(sct_mgr.airac_lookup_url)
 

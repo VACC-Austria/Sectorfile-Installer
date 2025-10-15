@@ -8,6 +8,7 @@ _translations = {
         "language": "Language",
         "name": "Name:",
         "vatsim_id": "Vatsim ID:",
+        "hint": "Hint",
         "vatsim_password": "Vatsim password:",
         "rating": "Rating:",
         "hoppie_code": "Hoppie code:",
@@ -24,7 +25,12 @@ _translations = {
         "fresh_install": "Fresh install",
         "Choose_a_profile": "Choose a profile",
         "start": "Start",
-        "sectorfile_version": "ATTENTION!\n\nDue to navdata provider changes, you must manually download the sectorfile. When this message is closed, your web browser will open the relevant AeroNav GNG page.\nPlease log in with your Navigraph and VATSIM accounts, download the file and extract its contents in the folder that will also be opened.\nYou may then press Start in the main window again.",
+        "sectorfile_version": (
+"""ATTENTION!
+
+Due to navdata provider changes, you have to manually download the sectorfile! 
+
+When you press OK, your web browser will open the AeroNav GNG page. Please log in with your Navigraph and VATSIM accounts, download the sectorfile package and extract its contents in the folder that will open as well."""),
         "download": "Download",
         "language_changed_after_reload": "Language is changed after a restart",
         "quit": "Quit Installer",
@@ -41,7 +47,7 @@ _translations = {
         "rating_not_set": "Your rating is not set!",
         "error": "Error!",
         "import_sectorfile": "Import sectorfile",
-        "press_ok_to_continue_import_or_cancel_to_abort": "Click on okay to continue the import.",
+        "press_ok_to_continue_import_or_cancel_to_abort": "When you are done extracting the Sectorfile, click on okay to continue the import.",
         "could_not_find_valid_sectorfile_in_directory": "No valid sectorfile in import folder!",
         "please_select_a_profile": "Please select a profile.",
         "no_profiles_found": "No profiles found. Did you import a sectorfile?",
@@ -55,6 +61,7 @@ _translations = {
         "language": "Sprache",
         "name": "Name:",
         "vatsim_id": "Vatsim ID:",
+        "hint": "Hinweis",
         "vatsim_password": "Vatsim Passwort:",
         "rating": "Bewertung:",
         "hoppie_code": "Hoppie-Code:",
@@ -70,7 +77,12 @@ _translations = {
         "fresh_install": "Neuinstallation",
         "Choose_a_profile": "Profil auswählen",
         "start": "Starten",
-        "sectorfile_version": "ACHTUNG!\n\nAufgrund von Änderungen beim Navdata-Anbieter müssen Sie die Sektor-Datei manuell herunterladen. Wenn diese Nachricht geschlossen wird, öffnet Ihr Webbrowser die entsprechende AeroNav GNG-Seite.\nBitte melden Sie sich mit Ihren Navigraph- und VATSIM-Konten an, laden Sie die Datei herunter und extrahieren Sie deren Inhalt in den ebenfalls geöffneten Ordner.\nAnschließend können Sie im Hauptfenster erneut auf Starten drücken.",
+        "sectorfile_version": (
+"""ACHTUNG!
+
+Aufgrund von Änderungen beim Navdata-Anbieter musst du die Sektor-Datei manuell herunterladen. 
+
+Wenn du auf OK klickst, öffnet dein Webbrowser die AeroNav GNG-Seite. Bitte melde dich mit deinem Navigraph- und deinem VATSIM-Konto an, lade das Sektorpaket herunter und entpacke es in den ebenfalls geöffneten Ordner."""),
         "download": "Herunterladen",
         "language_changed_after_reload": "Sprache wird nach Neustart geändert",
         "quit": "Installer beenden",
