@@ -12,7 +12,7 @@ class Settings(ValueStore):
     hoppie_code: str = ""
     afv_path: str = ""
     selected_language: str = "English"
-    euroscope_path: str = r"C:\Program Files (x86)\EuroScope2\EuroScope.exe"
+    euroscope_path: str = r"C:\Program Files (x86)\EuroScope\EuroScope.exe"
 
     _path: ClassVar[Path] = Path("settings.json")
     _editable: ClassVar[bool] = True

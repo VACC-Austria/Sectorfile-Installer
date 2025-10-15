@@ -1,11 +1,13 @@
 import tkinter as tk
 
+from sectorfile_installer.util import Config
 from ._translate import translate
 from ._util import center_in_parent
 
 def error_window(root: tk.Tk, message: str, title: str = "error"):    
     window = tk.Toplevel(root)
     window.title(translate(title))
+    window.iconbitmap(Config.get("icon_path"))
 
     msg_label = tk.Label(window, text=translate(message))
     msg_label.pack(pady=10, padx=20)
