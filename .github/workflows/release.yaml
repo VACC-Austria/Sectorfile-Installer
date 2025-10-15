@@ -15,5 +15,9 @@ jobs:
           python_ver: '3.14'
           spec: 'vacc-austria.spec'
           requirements: 'requirements.txt'
-          upload_exe_with_name: 'vacc_austria_session_launcher'
           options: --onefile, --name "VACC-Austria Session-Launcher", --windowed
+      - name: Create Release
+        uses: softprops/action-gh-release@6da8fa9354ddfdc4aeace5fc48d7f679b5214090
+        with:
+          prerelease: true
+          files: dist/*.exe
