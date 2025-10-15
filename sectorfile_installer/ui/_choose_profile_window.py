@@ -22,7 +22,7 @@ def choose_profile_window(root: tk.Tk):
     profiles = SectorfileManager().get_available_profiles()
 
     if len(profiles) == 0:
-        messagebox.showerror("error", translate("no_profiles_found"))
+        messagebox.showerror(translate("error"), translate("no_profiles_found"))
         window.destroy()
         return
 
@@ -36,7 +36,8 @@ def choose_profile_window(root: tk.Tk):
         selected = listbox.get(listbox.curselection())
         if selected is not None:
             profile_path = profiles[selected]
-            success, msg = EuroscopeManager().start(profile=profile_path)
+            es_mgr = EuroscopeManager()
+            success, msg = es_mgr.start(profile=profile_path)
             if success:
                 try:
                     AfvManager().start(workdir=get_app_data_folder())
@@ -47,10 +48,10 @@ def choose_profile_window(root: tk.Tk):
                 root.destroy()
                 return
             else:
-                messagebox.showerror("error", translate(msg))
+                messagebox.showerror(translate("error"), translate(msg))
                 window.destroy()
                 return
-        messagebox.showerror("error", translate("please_select_a_profile"))
+        messagebox.showerror(translate("error"), translate("please_select_a_profile"))
 
     tk.Button(
         button_frame, 

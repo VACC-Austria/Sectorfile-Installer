@@ -25,7 +25,7 @@ def main_window() -> tk.Tk:
     logo_img = tk.PhotoImage(file=config.logo_path)
     logo_label = tk.Label(root, image=logo_img)
     logo_label.image = logo_img
-    logo_label.pack(pady=50)
+    logo_label.pack(pady=50, padx=40)
 
     sct_mgr = SectorfileManager()
 

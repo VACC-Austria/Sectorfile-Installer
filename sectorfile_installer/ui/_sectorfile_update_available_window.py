@@ -1,5 +1,6 @@
 import tkinter as tk
 
+from sectorfile_installer.util import Config
 from ._translate import translate
 from ._util import center_in_parent, open_folder
 from ._install_sectorfile_action import install_sectorfile_action
@@ -7,6 +8,7 @@ from ._install_sectorfile_action import install_sectorfile_action
 def sectorfile_update_available_window(root: tk.Tk) -> tk.Tk:
     window = tk.Toplevel(root)
     window.title(translate("update_available"))
+    window.iconbitmap(Config.get("icon_path"))
 
     msg_label = tk.Label(window, text=translate("sectorfile_update_available"))
     msg_label.pack(pady=10, padx=20)

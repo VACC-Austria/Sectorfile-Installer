@@ -8,6 +8,7 @@ from ._util import center_in_parent
 def update_available_window(root: tk.Tk, msg: str, download_url: str) -> tk.Tk:
     window = tk.Toplevel(root)
     window.title(translate("update_available"))
+    window.iconbitmap(Config.get("icon_path"))
 
     msg_label = tk.Label(window, text=translate(msg))
     msg_label.pack(pady=10, padx=20)

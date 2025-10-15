@@ -14,6 +14,7 @@ def could_not_find_euroscope_window(root: tk.Tk) -> tk.Tk:
 
     window = tk.Toplevel(root)
     window.title(translate("euroscope_not_found"))
+    window.iconbitmap(Config.get("icon_path"))
 
     frame = tk.Frame(window)
     msg_label = tk.Label(
