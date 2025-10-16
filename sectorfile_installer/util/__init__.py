@@ -1,16 +1,19 @@
+import logging
 import os
 import shutil
-import logging
 from pathlib import Path
 
 import requests
 import win32api
 
-from ._logging import LOG_LEVELS, get_logger, set_log_level, get_log_file_path
-from ._settings import Settings
 from ._config import Config
-from ._runtime_vars import RuntimeVars
+from ._logging import LOG_LEVELS, get_log_file_path, get_logger, set_log_level
 from ._os import get_app_data_folder
+from ._runtime_vars import RuntimeVars
+from ._settings import Settings
+
+logger = get_logger(__file__)
+
 
 def check_internet(url="https://www.google.com", timeout=3):
     try:
@@ -18,6 +21,7 @@ def check_internet(url="https://www.google.com", timeout=3):
         return True
     except requests.ConnectionError:
         return False
+
 
 def copy_ownfolder(src, dst):
     if not os.path.exists(dst):
@@ -37,6 +41,7 @@ def copy_ownfolder(src, dst):
             # Dateien kopieren
             shutil.copy2(src_path, dst_path)
 
+
 def is_dir_empty(path: Path | str) -> bool:
     if isinstance(path, str):
         path = Path(str)
@@ -46,7 +51,11 @@ def is_dir_empty(path: Path | str) -> bool:
 
     return not bool(next(path.iterdir(), None))
 
-def version_tuple(version) -> tuple[int]:
+
+type Version = tuple[int]
+
+
+def version_tuple(version) -> Version:
     return tuple(map(int, (version.split("."))))
 
 
@@ -55,13 +64,31 @@ def get_fileinfo(path: Path | str, field) -> str | None:
 
     try:
         language, codepage = win32api.GetFileVersionInfo(
-            path,
-            '\\VarFileInfo\\Translation'
+            path, "\\VarFileInfo\\Translation"
         )[0]
-        stringFileInfo = u'\\StringFileInfo\\%04X%04X\\%s' % (
-            language, codepage, field
-        )
+        stringFileInfo = "\\StringFileInfo\\%04X%04X\\%s" % (language, codepage, field)
         return win32api.GetFileVersionInfo(path, stringFileInfo)
-    except:
+    except Exception:
         return None
 
+
+def get_online_versions() -> tuple[Version, tuple[Version, str]]:
+    config = Config.get()
+
+    try:
+        response = requests.get(config.URL + "versions.json")
+        data = response.json()
+
+        latest_installer_version = version_tuple(data["installer"])
+        latest_euroscope_version = version_tuple(data["euroscope"])
+        euroscope_upgrade_url = data["euroscope_url"]
+
+        logger.info("found available installer version %s", latest_installer_version)
+        logger.info("found available euroscope version %s", latest_euroscope_version)
+
+        return (
+            latest_installer_version,
+            (latest_euroscope_version, euroscope_upgrade_url),
+        )
+    except Exception:
+        return ("", ("", ""))
