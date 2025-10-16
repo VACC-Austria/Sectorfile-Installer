@@ -39,24 +39,28 @@ if __name__ == "__main__":
     executable_dir = os.path.dirname(__file__)
     RuntimeVars.set("executable_dir", executable_dir)
 
+    logger = get_logger(__file__)
+
+    config_path = args.config
+    if hasattr(sys, "_MEIPASS") and len(sys._MEIPASS) > 0:
+        logger.info("_MEIPASS: %s", sys._MEIPASS)
+        config_path = Path(sys._MEIPASS) / config_path
+        version_file_path = Path(sys._MEIPASS) / "VERSION"
+    else:
+        version_file_path = Path(executable_dir) / "VERSION"
+
     try:
-        with open(Path(executable_dir) / "VERSION", "r") as f:
+        with open(version_file_path, "r") as f:
             version = f.readline()
     except Exception:
         version = "0.0.1"
 
     RuntimeVars.set("version", version)
 
-    logger = get_logger(__file__)
     logger.info("Sectorfile Installer version %s", version)
     logger.info("logfile path: %s", get_log_file_path())
     logger.info("working directory: %s", os.getcwd())
     logger.info("executable dir: %s", executable_dir)
-
-    config_path = args.config
-    if hasattr(sys, "_MEIPASS") and len(sys._MEIPASS) > 0:
-        logger.info("_MEIPASS: %s", sys._MEIPASS)
-        config_path = os.path.join(sys._MEIPASS, config_path)
 
     if not Config.set_path(config_path, check=True):
         logger.error("could not load config '%s'", args.config)
