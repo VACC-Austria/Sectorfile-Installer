@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 
 from sectorfile_installer.util import Config, get_logger
 from sectorfile_installer.managers import SectorfileManager
@@ -8,6 +9,7 @@ from ._error_window import error_window
 from ._install_sectorfile_action import install_sectorfile_action
 from ._util import center_on_screen, open_folder
 from ._choose_profile_window import choose_profile_window
+from ._about_window import about_window
 
 logger = get_logger(__file__)
 
@@ -33,24 +35,30 @@ def main_window() -> tk.Tk:
     button_frame = tk.Frame(root)
     button_frame.pack(side=tk.BOTTOM, pady=20)
 
+    sectorfile_button = tk.Button(
+        button_frame,
+        text=translate("about"),
+        command=lambda: about_window(root)
+    ).grid(row=0, column=0, padx=20)
+
     def button_setting():
         settings_window(root)
     settings_button = tk.Button(button_frame, text=translate("setting"), command=button_setting)
-    settings_button.grid(row=0, column=0, padx=20)
+    settings_button.grid(row=0, column=1, padx=20)
 
     custom_files_button = tk.Button(
         button_frame, 
         text=translate("custom_files"),
         command=lambda: open_folder(sct_mgr.custom_files_folder)
     )
-    custom_files_button.grid(row=0, column=1, padx=20)
+    custom_files_button.grid(row=0, column=2, padx=20)
 
     sectorfile_button = tk.Button(
         button_frame, 
         text=translate("import_sectorfile"),
         command=install_sectorfile_action,
     )
-    sectorfile_button.grid(row=0, column=2, padx=20)
+    sectorfile_button.grid(row=0, column=3, padx=20)
 
     def button_start():
         check_result = sct_mgr.check_install_prerequisites()
@@ -69,7 +77,7 @@ def main_window() -> tk.Tk:
         text=translate("start"), 
         command=button_start
     )
-    start_button.grid(row=0, column=3, padx=20)
+    start_button.grid(row=0, column=4, padx=20)
 
     center_on_screen(root, root)
 

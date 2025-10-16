@@ -1,11 +1,13 @@
 import tkinter as tk
 
+from sectorfile_installer.util import Config
 from ._translate import translate
 
 def restart_window(root: tk.Tk) -> tk.Tk:
     window = tk.Toplevel(root)
     window.title("Restart required")
     window.geometry("300x100")
+    window.iconbitmap(Config.get("icon_path"))
     tk.Label(
         window, 
         text=translate("language_changed_after_reload")

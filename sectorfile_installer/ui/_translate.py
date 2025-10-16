@@ -54,6 +54,12 @@ When you press OK, your web browser will open the AeroNav GNG page. Please log i
         "choose_a_profile": "Select Profile",
         "error": "Error!",
         "sectorfile_update_available": "A sectorfile update is available!",
+        "about": "About",
+        "about_message": """Sectorfile Installer
+
+Built by the team at VACC-Austria.
+
+For further information visit:""",
     },    
     "Deutsch": {
         "custom_files": "Benutzerdefinierte Dateien ",
@@ -106,6 +112,12 @@ Wenn du auf OK klickst, öffnet dein Webbrowser die AeroNav GNG-Seite. Bitte mel
         "choose_a_profile": "Profil auswählen",
         "error": "Fehler!",
         "sectorfile_update_available": "Ein Sectorfile Update ist verfügbar!",
+        "about": "Über ...",
+        "about_message": """Sectorfile Installer
+
+Erstellt vom Team der VACC-Austria.
+
+Weitere Informationen auf:"""
      }
 }
 
