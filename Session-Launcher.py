@@ -24,7 +24,7 @@ if __name__ == "__main__":
         "--config",
         type=str,
         help="path of configuration to use",
-        default="vacc-austria\\config.json",
+        default="vacc\\config.json",
     )
     parser.add_argument("--log-level", choices=list(LOG_LEVELS.keys()), default="INFO")
     parser.add_argument("--settings-file", type=str, default=None)

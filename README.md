@@ -1,35 +1,39 @@
-This installer checks whether newer files are available on a server compared to the local ones. When the program starts, it first verifies if a newer version of the installer is available online.
+# Sectorfile Installer
+## Usage
+Sectorfile Installer helps you set up Euroscope for your next session.
 
-The main screen contains three control elements:
+Simply Download the latest version from the [Releases page](https://github.com/VACC-Austria/Sectorfile-Installer/releases) and let it guide you through the setup.
 
-Settings Language Username VATSIM ID VATSIM Password VATSIM Rating Hoppie Code Audio Tool for VATSIM Custom Files Fresh Install Start When pressing Fresh Install:
+Sectorfile Installer will tell you, when there is a newer Sectorfile available or when your VACC recommends you Upgrade your Euroscope to a newer version.
 
-Download and install EuroScope Open GNG Webpage and open Sectorfile folder for extracting the GNG file When pressing Start, 2 different scenarios:
+## Finding the Logs
+Logs and other application data can be found in the AppData directory: `C:\Users\<your-user>\AppData\Local\SectorfileInstaller\session-launcher.log`
 
-1.When Airac isn't Up to Date:
+## Developers
+### Setup
+```
+# set up a venv
+py -m venv venv
 
-Check if the local EuroScope version matches the online version. If not, download and install EuroScope Check if the local sector file version matches the online version. If not, Open GNG Webpage and open Sectorfile folder for extracting the GNG file. 
+# activate it
+.\venv\Scripts\Activate.ps1
 
+# install the dependencies
+pip install -r requirements.txt
 
+# install the dev dependencies
+pip install -r requirements.dev.txt
+```
 
-2.When Airac is Up to Date:
+To set up the configuration you want to use, you need a powershell with admin rights. Create a Symlink from `vacc` to your desired configuration directory by running the following command from the Repository root:
+```powershell
+New-Item -Path vacc -itemType SymbolicLink -Value vacc-austria
 
-Check if the local EuroScope version matches the online version. If not, download and install EuroScope Check if the local sector file version matches the online version. Transfer custom files into the installed sector file Insert user data from settings into all profiles If multiple profiles exist, open the selection window and start EuroScope with the chosen profile Launch the audio tool for VATSIM DEVELOPER
+# Now run the app
+python .\Session-Launcher.py
+```
 
-all you must set is
+### Package
+To locally test the package build, run the `build.bat` script. It will create the .exe file and put it into the dist/ folder.
 
-URL = "HTTP link where all your onlinefiles are stored"
-
-FIR = "4-Letter Code of your FIR"
-
-Packagename = "How the Correct Packagename is called at https://files.aero-nav.com/"
-
-Testing = True or False, depenting if you are using this file as py or convert it into a exe file via auto-py-to-exe
-
-Required online Files
-
-EuroScope.tff
-
-EuroScope.zip
-
-Installerversion.txt
+To release a package, create a version tag (e.g. `v1.2.3`) and push it to the repository. A github action then builds the Package and creates a Release.
