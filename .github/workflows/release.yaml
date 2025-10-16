@@ -24,5 +24,5 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@6da8fa9354ddfdc4aeace5fc48d7f679b5214090
         with:
-          prerelease: true
+          prerelease: false
           files: dist/*.exe
