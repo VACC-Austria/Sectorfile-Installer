@@ -48,7 +48,7 @@ class SectorfileManager:
     
     @property
     def hoppie_config_file(self) -> Path:
-        return self.sectorfile_folder / "Plugins" / "Topsky" / "TopSkyCPDLChoppieCode.txt"
+        return self.sectorfile_folder / "LOVV" / "Plugins" / "Topsky" / "TopSkyCPDLChoppieCode.txt"
 
     @property
     def app_data_dir(self) -> Path:
