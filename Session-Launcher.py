@@ -1,21 +1,31 @@
-import os
 import logging
-from pathlib import Path
-from argparse import ArgumentParser
+import os
 import sys
+from argparse import ArgumentParser
+from pathlib import Path
 
 from sectorfile_installer.ui import Ui, select_language
 from sectorfile_installer.util import (
-    Config, Settings, RuntimeVars, LOG_LEVELS, 
-    set_log_level, get_logger, get_app_data_folder,
-    get_log_file_path
+    LOG_LEVELS,
+    Config,
+    RuntimeVars,
+    Settings,
+    get_app_data_folder,
+    get_log_file_path,
+    get_logger,
+    set_log_level,
 )
 
 logging.basicConfig()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = ArgumentParser(description="Sectorfile installer")
-    parser.add_argument("--config", type=str, help="path of configuration to use", default="vacc\\config.json")
+    parser.add_argument(
+        "--config",
+        type=str,
+        help="path of configuration to use",
+        default="vacc-austria\\config.json",
+    )
     parser.add_argument("--log-level", choices=list(LOG_LEVELS.keys()), default="INFO")
     parser.add_argument("--settings-file", type=str, default=None)
 
@@ -34,7 +44,7 @@ if __name__ == '__main__':
             version = f.readline()
     except Exception:
         version = "0.0.1"
-        
+
     RuntimeVars.set("version", version)
 
     logger = get_logger(__file__)
@@ -54,7 +64,6 @@ if __name__ == '__main__':
     Config.load()
     if hasattr(sys, "_MEIPASS") and len(sys._MEIPASS) > 0:
         Config.apply_asset_path(sys._MEIPASS)
-
 
     if args.settings_file is None:
         settings_file = get_app_data_folder() / "settings.json"
