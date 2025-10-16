@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt pyinstaller==6.16.0
       - name: Write VERSION file
-        run: "\"${{ github.ref }}\" -replace \"v\", \"\" | Out-File VERSION"
+        run: "\"${{ github.ref }}\" -replace \"refs/tags/v\", \"\" | Out-File VERSION"
       - name: Create exe
         run: pyinstaller --noconfirm vacc-austria.spec
       - name: Create Release
