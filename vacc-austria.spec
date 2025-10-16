@@ -5,7 +5,7 @@ a = Analysis(
     ['Session-Launcher.py'],
     pathex=[],
     binaries=[],
-    datas=[('vacc-austria', 'vacc-austria')],
+    datas=[('vacc-austria', 'vacc-austria'), ('VERSION', 'VERSION')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
