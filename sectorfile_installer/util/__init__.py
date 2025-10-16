@@ -15,14 +15,6 @@ from ._settings import Settings
 logger = get_logger(__file__)
 
 
-def check_internet(url="https://www.google.com", timeout=3):
-    try:
-        _ = requests.get(url, timeout=timeout)
-        return True
-    except requests.ConnectionError:
-        return False
-
-
 def copy_ownfolder(src, dst):
     if not os.path.exists(dst):
         os.makedirs(dst)
