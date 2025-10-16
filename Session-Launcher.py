@@ -42,7 +42,7 @@ if __name__ == "__main__":
     logger = get_logger(__file__)
 
     config_path = args.config
-    if hasattr(sys, "_MEIPASS") and len(sys._MEIPASS) > 0:
+    if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
         logger.info("_MEIPASS: %s", sys._MEIPASS)
         config_path = Path(sys._MEIPASS) / config_path
         version_file_path = Path(sys._MEIPASS) / "VERSION"
@@ -52,7 +52,8 @@ if __name__ == "__main__":
     try:
         with open(version_file_path, "r") as f:
             version = f.readline()
-    except Exception:
+    except Exception as e:
+        logger.warning("could not load VERSION file - %s", str(e))
         version = "0.0.1"
 
     RuntimeVars.set("version", version)
