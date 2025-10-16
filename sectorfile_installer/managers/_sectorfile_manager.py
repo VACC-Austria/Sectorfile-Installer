@@ -169,6 +169,7 @@ class SectorfileManager:
     def install(self):
         self._install_hoppie_code()
         self._install_profile_files()
+        self._install_custom_files()
 
     def check_install_prerequisites(self) -> str | Literal[True]:
         settings = Settings.get()
@@ -199,6 +200,13 @@ class SectorfileManager:
 
         for path in profile_files:
             self._update_profile_file(path)
+
+    def _install_custom_files(self):
+        shutil.copytree(
+            self.custom_files_folder, 
+            self.sectorfile_folder,
+            dirs_exist_ok=True
+        )
 
     def _update_profile_file(self, path: Path):
         settings = Settings.get()
