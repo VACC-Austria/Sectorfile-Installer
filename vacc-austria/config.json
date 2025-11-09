@@ -11,5 +11,12 @@
     "special_files": [
         "LOVV\\Plugins\\Groundradar\\GRpluginSettingsLocal.txt",
         "LOVV\\Plugins\\Topsky\\TopSkySettingsLocal.txt"
+    ],
+    "custom_files_folders": [
+        "LOVV\\Alias",
+        "LOVV\\ASR",
+        "LOVV\\Plugins",
+        "LOVV\\Settings",
+        "LOVV\\Sounds"
     ]
 }

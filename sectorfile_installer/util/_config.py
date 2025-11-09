@@ -16,6 +16,7 @@ class Config(ValueStore):
     installer_update_URL: str
     euroscope_version_URL: str
     special_files: list[str] = Field(default_factory=list)
+    custom_files_folders: list[str] = Field(default_factory=list)
     
     icon_path: str = "icon.ico"
     Testing: bool = False
