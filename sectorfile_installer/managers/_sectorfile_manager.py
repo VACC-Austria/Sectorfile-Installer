@@ -13,14 +13,6 @@ from sectorfile_installer.util import Config, Settings, get_logger, is_dir_empty
 
 logger = get_logger(__file__)
 
-_CUSTOMFILE_DIRS = [
-    "Alias",
-    "ASR",
-    "Plugins",
-    "Settings",
-    "Sounds",
-]
-
 _RATING_MAP = dict(
     OBS=0,
     S1=1,
@@ -75,8 +67,10 @@ class SectorfileManager:
         
         custom_files_path.mkdir(exist_ok=True, parents=True)
 
-        for dir_ in _CUSTOMFILE_DIRS:
-            (custom_files_path / dir_).mkdir(exist_ok=True, parents=True)
+        for dir_ in Config.get("custom_files_folders"):
+            abs_path = custom_files_path / dir_
+            logger.debug("ensuring custom files directory: %s", str(abs_path))
+            abs_path.mkdir(exist_ok=True, parents=True)
 
     def ensure_sectorfile_folder(self):
         self.sectorfile_folder.mkdir(exist_ok=True, parents=True)
@@ -175,8 +169,8 @@ class SectorfileManager:
     
     def install(self):
         self._install_hoppie_code()
-        self._install_profile_files()
         self._install_custom_files()
+        self._install_profile_files()
 
     def check_install_prerequisites(self) -> str | Literal[True]:
         settings = Settings.get()
@@ -212,11 +206,11 @@ class SectorfileManager:
         logger.info(
             "copying custom files from %s to %s", 
             self.custom_files_folder,
-            self.sectorfile_settings_folder
+            self.sectorfile_folder
         )
         shutil.copytree(
             self.custom_files_folder, 
-            self.sectorfile_settings_folder,
+            self.sectorfile_folder,
             dirs_exist_ok=True
         )
 
